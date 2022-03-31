@@ -59,7 +59,7 @@ public class Main {
         for(Object s : Client.list) {
             System.out.println(s);
         }
-
+//
 
     }
 
