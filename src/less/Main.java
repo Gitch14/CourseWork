@@ -221,9 +221,9 @@ public class Main {
             SaleInfo.AddList(new SaleInfo.Sale(id_City, sale[0], format.parse(sale[1])));
 
 
-            System.out.println("Введите 1 для продолжения");
-            int checknum = scanner.nextInt();
-            if (checknum == 1) {
+            System.out.println("Введите Y или y для продолжения");
+            String check = scanner.nextLine();
+            if (check.contains("Y") || check.contains("y")) {
                 b = true;
             } else {
                 b = false;
@@ -246,5 +246,7 @@ public class Main {
         for(Object s4 : SaleInfo.saleList) {
             System.out.println(s4);
         }
+
+        
     }
 }
