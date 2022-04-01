@@ -245,7 +245,7 @@ public class Main {
         for(Object s4 : SaleInfo.saleList) {
             System.out.println(s4);
         }
-
+//
      //
     }
 }
