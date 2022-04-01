@@ -191,14 +191,25 @@ public class Main {
         int key_Client = 0, id_City = 0, id_Voucher = 0, id_Sale = 0;
         boolean b = true;
 
-        do {
+        //Колонка Клиента
+        do  {
             key_Client++;
             System.out.println("Введите имя клиента, номер телефона, номер паспорта и скидку разделяйте их двумя пробелами");
             String prodStr1 = scanner.nextLine();
             String[] client = prodStr1.split("  ");
             Client.AddList(new Client.User(key_Client,client[0], client[1], client[2], Integer.parseInt(client[3].trim())));
 
+            System.out.println("Введите Y или y для продолжения");
+            String check = scanner.nextLine();
+            if (check.contains("Y") || check.contains("y")) {
+                b = true;
+            } else {
+                b = false;
+            }
+        } while (b == true);
 
+        //Колонка Городов
+        do  {
             id_City++;
             System.out.println("Введите название города, и страну разделяйте их двумя пробелами");
             String prodStr2 = scanner.nextLine();
@@ -206,19 +217,41 @@ public class Main {
             CityInfo.AddList(new CityInfo.City(id_City, city[0], city[1]));
 
 
+            System.out.println("Введите Y или y для продолжения");
+            String check = scanner.nextLine();
+            if (check.contains("Y") || check.contains("y")) {
+                b = true;
+            } else {
+                b = false;
+            }
+        } while (b == true);
+
+
+        //Колонка Путевок
+        do  {
             id_Voucher++;
             System.out.println("Введите название путевки, дата начало, дата конца, город ключ, услуги, ценна и количество человек скидку разделяйте их двумя пробелами");
             String prodStr3 = scanner.nextLine();
             String[] voucher = prodStr3.split("  ");
             VoucherInfo.AddVoucher(new VoucherInfo.Voucher(id_Voucher,voucher[0], format.parse(voucher[1]), format.parse(voucher[2]), Integer.parseInt(voucher[3].trim()), voucher[4], Integer.parseInt(voucher[5].trim()),Integer.parseInt(voucher[6].trim())));
 
+            System.out.println("Введите Y или y для продолжения");
+            String check = scanner.nextLine();
+            if (check.contains("Y") || check.contains("y")) {
+                b = true;
+            } else {
+                b = false;
+            }
+        } while (b == true);
 
+
+        //Колонка продаж
+        do  {
             System.out.println("Введите ФИО сотрудника и дата продажы разделяйте их двумя пробелами");
             id_Sale++;
             String prodStr4 = scanner.nextLine();
             String[] sale = prodStr4.split("  ");
             SaleInfo.AddList(new SaleInfo.Sale(id_City, sale[0], format.parse(sale[1])));
-
 
             System.out.println("Введите Y или y для продолжения");
             String check = scanner.nextLine();
