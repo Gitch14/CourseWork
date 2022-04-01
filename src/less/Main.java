@@ -192,7 +192,6 @@ public class Main {
         boolean b = true;
 
         do {
-            
             key_Client++;
             System.out.println("Введите имя клиента, номер телефона, номер паспорта и скидку разделяйте их двумя пробелами");
             String prodStr1 = scanner.nextLine();
@@ -247,6 +246,6 @@ public class Main {
             System.out.println(s4);
         }
 
-        
+     //
     }
 }
