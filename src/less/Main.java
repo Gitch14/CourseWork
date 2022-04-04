@@ -104,18 +104,18 @@ class VoucherInfo {
         public String Name;
         public Date date_start;
         public Date date_end;
-        public int id_City_voucher;
+        public int id_City;
         public String services;
         public int price;
         public int count;
 
 
-        public Voucher(int id_Voucher, String name, Date date_start, Date date_end, int id_City_voucher, String services, int price, int count) {
+        public Voucher(int id_Voucher, String name, Date date_start, Date date_end, int id_City, String services, int price, int count) {
             this.id_Voucher = id_Voucher;
             Name = name;
             this.date_start = date_start;
             this.date_end = date_end;
-            this.id_City_voucher = id_City_voucher;
+            this.id_City = id_City;
             this.services = services;
             this.price = price;
             this.count = count;
@@ -128,7 +128,7 @@ class VoucherInfo {
                     ", Name='" + Name + '\'' +
                     ", date_start='" + date_start + '\'' +
                     ", date_end='" + date_end + '\'' +
-                    ", id_City_voucher=" + id_City_voucher +
+                    ", id_City=" + id_City +
                     ", services='" + services + '\'' +
                     ", price=" + price +
                     ", count=" + count +
@@ -139,8 +139,8 @@ class VoucherInfo {
 
     static ArrayList<Object> voucherList = new ArrayList<>();
 
-    public void AddVoucher(int id_Voucher, String name, Date date_start, Date date_end, int id_City_voucher, String services, int price, int count) {
-        voucherList.add(new Voucher(id_Voucher, name,date_start, date_end, id_City_voucher, services, price, count));
+    public void AddVoucher(int id_Voucher, String name, Date date_start, Date date_end, int id_City, String services, int price, int count) {
+        voucherList.add(new Voucher(id_Voucher, name,date_start, date_end, id_City, services, price, count));
     }
 }// Voucher class end
 
@@ -209,6 +209,7 @@ public class Main {
         } while (b == true);
 
         //Колонка Городов
+        /*
         do  {
             id_City++;
             System.out.println("Введите название города, и страну разделяйте их двумя пробелами");
@@ -225,15 +226,16 @@ public class Main {
                 b = false;
             }
         } while (b == true);
-
+*/
 
         //Колонка Путевок
         do  {
+            id_City++;
             id_Voucher++;
             System.out.println("Введите название путевки, дата начало, дата конца, город ключ, услуги, ценна и количество человек скидку разделяйте их двумя пробелами");
             String prodStr3 = scanner.nextLine();
             String[] voucher = prodStr3.split("  ");
-            VoucherInfo.AddVoucher(new VoucherInfo.Voucher(id_Voucher,voucher[0], format.parse(voucher[1]), format.parse(voucher[2]), Integer.parseInt(voucher[3].trim()), voucher[4], Integer.parseInt(voucher[5].trim()),Integer.parseInt(voucher[6].trim())));
+            VoucherInfo.AddVoucher(new VoucherInfo.Voucher(id_Voucher,voucher[0], format.parse(voucher[1]), format.parse(voucher[2]), id_City, voucher[4], Integer.parseInt(voucher[5].trim()),Integer.parseInt(voucher[6].trim())));
 
             System.out.println("Введите Y или y для продолжения");
             String check = scanner.nextLine();
@@ -267,10 +269,10 @@ public class Main {
             System.out.println(s1);
         }
 
-        for(Object s2 : CityInfo.cityList) {
+      /*  for(Object s2 : CityInfo.cityList) {
             System.out.println(s2);
         }
-
+*/
         for(Object s3 : VoucherInfo.voucherList) {
             System.out.println(s3);
         }
